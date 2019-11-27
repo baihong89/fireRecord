@@ -76,8 +76,8 @@ p {
 }
 
 .mengceng {
-  width: 80%;
-  height: 200px;
+  width: 95%;
+  height: 350px;
   background: #3857F8;
   position: absolute;
   top: 51px;
@@ -130,4 +130,19 @@ p {
 
 .fontBold {
   font-weight: bold;
+}
+
+.fixed {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  background-color: skyblue;
+  z-index: 9999;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 22px;
+  color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

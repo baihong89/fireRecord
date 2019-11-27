@@ -6,745 +6,1586 @@
   <meta http-equiv="X-UA-Compatible"
         content="IE=edge" />
   <meta name="viewport"
-        content="width=device-width,initial-scale=1.0" />
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <link rel="stylesheet"
         href="./layui/css/layui.css">
   <link rel="stylesheet"
         href="./css/text.css" />
+  <link rel="stylesheet"
+        type="text/css"
+        href="./css/signature.css" />
   <title>消防监督检查记录</title>
+
+  <style>
+    .signature-layout {
+      /* border-bottom: 1px solid #CCC; */
+      overflow: visible;
+      /* height: 45px;
+      width: 200px; */
+      margin-bottom: 26px;
+    }
+
+    .signature-img {
+      max-height: 100px;
+      max-width: 140px;
+    }
+
+    .signature-btn {
+      width: 140px;
+      height: 100px;
+      margin-top: 10px;
+      border: 1px solid #ffffff;
+      background: rgb(245, 245, 245);
+      text-align: center;
+      line-height: 100px;
+    }
+
+    .signature-btn:hover {
+      border: 1px solid #0486f8;
+    }
+
+    .www {
+      background-image: url("data:image/png;base64,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");
+    }
+
+    #btnSignature2 {
+      margin-left: 30px;
+    }
+  </style>
+  <script src="./layui/layui.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="./js/checkUtil.js"></script>
+  <script src="./js/signature.js"></script>
+  <script src="../js/vue.min.js"></script>
+  <script src="../js/axios.min.js"></script>
+  <script src="../js/vue-resource.min.js"></script>
+  <script src="./js/main.js"></script>
 </head>
 
 <body>
-  <div class="content">
-    <div class="top">
-      <span>南通市消防救援支队</span>
-      <h3 class="fontBold">消防监督检查记录</h3>
-    </div>
-    <p class="xfzz">编号 (<input type="text"
-             style="width: 35px;"
-             class="noborder"> ) 第<input type="text"
-             style="width: 35px;"
-             class="noborder"> 号</p>
-    <form style="display: flex;margin-bottom: 30px;">
-      <label style="width: 70px;">检查形式:</label>
+  <div id="app">
+    <div class="content">
+      <div class="top">
+        <span>深圳市消防救援支队罗湖大队</span>
+        <h3 class="fontBold">消防监督检查记录</h3>
+      </div>
+      <p class="xfzz">编号 (<input type="text"
+               style="width: 35px;"
+               class="noborder"
+               v-model="fireCheckLogPO.baseInfoSN1">
+        ) 第<input type="text"
+               style="width: 35px;"
+               class="noborder"
+               v-model="fireCheckLogPO.baseInfoSN2"> 号</p>
+      <form style="display: flex;margin-bottom: 30px;">
+        <label style="width: 70px;">检查形式:</label>
+        <div id="baseInfoCheckType">
+          <input v-model="fireCheckLogPO.baseInfoCheckType1"
+                 type="checkbox" /><label>消防监督抽查</label><br />
+          <input v-model="fireCheckLogPO.baseInfoCheckType2"
+                 type="checkbox" /><label>公众聚集场所投入使用、营业前消防安全检查 </label>
+        </div>
+      </form>
+      <p>被检查单位（场所）名称:<input v-model="fireCheckLogPO.baseInfoUnitName"
+               type="text"
+               style="width:50%;"
+               class="under"></p>
+      <p>地　　址:<input v-model="fireCheckLogPO.baseInfoAddress"
+               type="text"
+               class="under"
+               style="width:80%;"></p>
+      <div class="flex">
+        <p>消防安全责任人:<input v-model="fireCheckLogPO.baseInfoSafeLiableMan"
+                 type="text"
+                 class="under"></p>
+        <p>电话:<input v-model="fireCheckLogPO.baseInfoSafeLiableManTel"
+                 type="text"
+                 class="under"></p>
+      </div>
+      <div class="flex">
+        <p>消防安全管理人:<input v-model="fireCheckLogPO.baseInfoSafeManageMan"
+                 type="text"
+                 class="under"></p>
+        <p>电话:<input v-model="fireCheckLogPO.baseInfoSafeManageManTel"
+                 type="text"
+                 class="under"></p>
+      </div>
+      <div class="flex">
+        <p>联 系 人:<input v-model="fireCheckLogPO.baseInfoContactMan"
+                 type="text"
+                 class="under"></p>
+        <p>电话:<input v-model="fireCheckLogPO.baseInfoContactManTel"
+                 type="text"
+                 class="under"></p>
+      </div>
+      <div style="margin: 30px 0;"
+           id="baseInfoCompanyType">
+        <input v-model="fireCheckLogPO.baseInfoCompanyType1"
+               type="checkbox" /><label>消防安全重点单位</label>
+        <input v-model="fireCheckLogPO.baseInfoCompanyType2"
+               type="checkbox"
+               class="left25" /><label>非消防安全重点单位</label>
+      </div>
+      <p>消防监督检查员:<input v-model="fireCheckLogPO.baseInfoCheckMan"
+               type="text"
+               class="under"></p>
       <div>
-        <input type="checkbox" /><label>消防监督抽查</label><br />
-        <input type="checkbox" /><label>公众聚集场所投入使用、营业前消防安全检查 </label>
+        <p>检查时间:<input v-model="fireCheckLogPO.baseInfoCheckYear"
+                 type="text"
+                 style="width: 35px;"
+                 class="under">年<input v-model="fireCheckLogPO.baseInfoCheckMonth"
+                 type="text"
+                 style="width: 35px;"
+                 class="under">月<input v-model="fireCheckLogPO.baseInfoCheckDay"
+                 type="text"
+                 style="width: 35px;"
+                 class="under">日<input v-model="fireCheckLogPO.baseInfoCheckHour"
+                 type="text"
+                 style="width: 35px;"
+                 class="under">时</p>
       </div>
-    </form>
-    <p>被检查单位（场所）名称:<input type="text"
-             style="width:50%;"
-             class="under"></p>
-    <p>地　　址:<input type="text"
-             class="under"
-             style="width:80%;"></p>
-    <div class="flex">
-      <p>消防安全责任人:<input type="text"
-               class="under"></p>
-      <p>电话:<input type="text"
-               class="under"></p>
-    </div>
-    <div class="flex">
-      <p>消防安全管理人:<input type="text"
-               class="under"></p>
-      <p>电话:<input type="text"
-               class="under"></p>
-    </div>
-    <div class="flex">
-      <p>联 系 人:<input type="text"
-               class="under"></p>
-      <p>电话:<input type="text"
-               class="under"></p>
-    </div>
-    <div style="margin: 30px 0;">
-      <input type="checkbox" /><label>消防安全重点单位</label>
-      <input type="checkbox"
-             class="left25" /><label>非消防安全重点单位</label>
-    </div>
-    <p>消防监督检查员:<input type="text"
-             class="under"></p>
-    <div>
-      <p>检查时间:<input type="text"
-               style="width: 35px;"
-               class="under">年<input type="text"
-               style="width: 35px;"
-               class="under">月<input type="text"
-               style="width: 35px;"
-               class="under">日<input type="text"
-               style="width: 35px;"
-               class="under">时</p>
-    </div>
-    <p>被检查单位随同检查人员（签名）:<input type="text"
-             class="under"></p>
-    <p style="margin: 50px 0;">此记录由消防救援机构支队存档</p>
-    <div class="tableBox">
-      <h5 style="text-align: center;
-      margin: 13px 0;">监 督 检 查 内 容 和 情 况</h5>
-
-      <div class="layui-row layui-col-space15">
-        <div class="layui-col-md6">
-          <div class="mengceng"
-               id="mengceng1">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <span class="fontBold">消防许可及验收备案</span>
-              <span class="btn"
-                    id="btn1">执法记录</span>
+      <p style="margin: 50px 0;">此记录由消防救援机构支队存档</p>
+      <div class="tableBox">
+        <h5 style="text-align: center; margin: 13px 0;">监 督 检 查 内 容 和 情 况</h5>
+        <div class="layui-row layui-col-space15">
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng1">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <p class="bold">被查建筑物名称:<input type="text"
-                       class="under"></p>
-              <div><input type="checkbox" /><label>1998年9月1日之前竣工建筑且此后未改建（含装修、用途变更）</label></div>
-              <div><input type="checkbox" /><label>依法通过消防验收</label></div>
-              <div><input type="checkbox" /><label>依法进行竣工验收消防备案</label></div>
-              <p>其他情况:<input type="text"
-                       class="under"></p>
-              <div>
-                <input type="checkbox" /><label>是</label>
-                <input type="checkbox"
-                       class="left25" /><label>否</label>
-                <label style="margin-left: 30px;">公众聚集场所</label>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <span class="fontBold">消防许可及验收备案</span>
+                <span class="btn"
+                      id="btn1">执法记录</span>
               </div>
-              <p class="bold">建筑物或者场所使用情况与消防验收或者竣工验收消防备案时的使用性质相符情况</p>
-              <div>
-                <input type="checkbox" /><label>相符</label>
-                <input type="checkbox"
-                       class="left25" /><label>不相符</label>
+              <div class="layui-card-body">
+                <p class="bold">被查建筑物名称:<input v-model="fireCheckLogPO.keepOnRecordBuildName"
+                         type="text"
+                         class="under"
+                         style="width:150px">
+                </p>
+                <div id="keepOnRecordBuildType">
+                  <input v-model="fireCheckLogPO.keepOnRecordBuildType1"
+                         type="checkbox" /><label>1998年9月1日之前竣工建筑且此后未改建（含装修、用途变更）</label></br>
+                  <input v-model="fireCheckLogPO.keepOnRecordBuildType2"
+                         type="checkbox" /><label>依法通过消防验收</label></br>
+                  <input v-model="fireCheckLogPO.keepOnRecordBuildType3"
+                         type="checkbox" /><label>依法进行竣工验收消防备案</label>
+                </div>
+                <p>其他情况:<input v-model="fireCheckLogPO.keepOnRecordOtherCase"
+                         type="text"
+                         class="under"></p>
+                <div id="keepOnRecordIsGather">
+                  <input v-model="fireCheckLogPO.keepOnRecordIsGather1"
+                         type="checkbox" /><label>是</label>
+                  <input v-model="fireCheckLogPO.keepOnRecordIsGather2"
+                         type="checkbox"
+                         class="left25" /><label>否</label>
+                  <label style="margin-left: 30px;">公众聚集场所</label>
+                </div>
+                <div id="keepOnRecordHasChecked">
+                  <label style="margin-left: 10px;">依法通过投入使用、营业前消防安全检查</label>
+                  <input v-model="fireCheckLogPO.keepOnRecordHasChecked1"
+                         type="checkbox"
+                         class="left25" /><label>是</label>
+                  <input v-model="fireCheckLogPO.keepOnRecordHasChecked2"
+                         type="checkbox"
+                         class="left25" /><label>否</label>
+                </div>
+                <div id="keepOnRecordIsCoincide">
+                  <label class="bold">建筑物或者场所使用情况与消防验收或者竣工验收消防备案时的使用性质相符情况</label>
+                  <input v-model="fireCheckLogPO.keepOnRecordIsCoincide1"
+                         type="checkbox" /><label>相符</label>
+                  <input v-model="fireCheckLogPO.keepOnRecordIsCoincide2"
+                         type="checkbox"
+                         class="left25" /><label>不相符</label>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="layui-col-md6">
-          <div class="mengceng"
-               id="mengceng2">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <span class="fontBold">消防安全管理</span>
-              <span class="btn"
-                    id="btn2">执法记录</span>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng2">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <div>
-                <label class="bold">消防安全制度 </label>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox"
-                       class="left25" /><label>无</label>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <span class="fontBold">消防安全管理</span>
+                <span class="btn"
+                      id="btn2">执法记录</span>
               </div>
-              <div>
-                <label class="bold">灭火和应急疏散预案</label>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox"
-                       class="left25" /><label>无</label>
+              <div class="layui-card-body">
+                <div id="fireSafetyFireSystem">
+                  <label class="bold">消防安全制度 </label>
+                  <input v-model="fireCheckLogPO.fireSafetyFireSystem1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.fireSafetyFireSystem2"
+                         type="checkbox"
+                         class="left25" /><label>无</label>
+                </div>
+                <div id="fireSafetyEmerPlan">
+                  <label class="bold">灭火和应急疏散预案</label>
+                  <input v-model="fireCheckLogPO.fireSafetyEmerPlan1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.fireSafetyEmerPlan2"
+                         type="checkbox"
+                         class="left25" /><label>无</label>
+                </div>
+                <div id="fireSafetySafeTrain">
+                  <label class="bold bsj">员工消防安全培训 </label>
+                  <input v-model="fireCheckLogPO.fireSafetySafeTrain1"
+                         type="checkbox" /><label>有记录</label>
+                  <input v-model="fireCheckLogPO.fireSafetySafeTrain2"
+                         type="checkbox"
+                         class="left10" /><label>无记录</label>
+                  <input v-model="fireCheckLogPO.fireSafetySafeTrain3"
+                         type="checkbox"
+                         class="left10" /><label>有,但不符合规定</label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.fireSafetySafeManageTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">消防安全管理人 </label>
+                  <label id="fireSafetySafeManage">
+                    <input v-model="fireCheckLogPO.fireSafetySafeManage1"
+                           type="checkbox" /><label>确定</label>
+                    <input v-model="fireCheckLogPO.fireSafetySafeManage2"
+                           type="checkbox"
+                           class="left25" /><label>未确定</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.fireSafetyFireCheckTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold bsj">防火检查、巡查 </label>
+                  <label id="fireSafetyFireCheck">
+                    <input v-model="fireCheckLogPO.fireSafetyFireCheck1"
+                           type="checkbox" /><label>有记录</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFireCheck2"
+                           type="checkbox"
+                           class="left10" /><label>无记录</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFireCheck3"
+                           type="checkbox"
+                           class="left10" /><label>有,但不符合规定</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.fireSafetyFireRepairTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">消防设施、器材、消防安全标志定期组织维修保养 </label>
+                  <label id="fireSafetyFireRepair">
+                    <input v-model="fireCheckLogPO.fireSafetyFireRepair1"
+                           type="checkbox" /><label>有记录</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFireRepair2"
+                           type="checkbox"
+                           class="left25" /><label>无记录</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.fireSafetyFirePerformTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold bsj">消防演练 </label>
+                  <label id="fireSafetyFirePerform">
+                    <input v-model="fireCheckLogPO.fireSafetyFirePerform1"
+                           type="checkbox" /><label>有记录</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFirePerform2"
+                           type="checkbox"
+                           class="left10" /><label>无记录</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFirePerform3"
+                           type="checkbox"
+                           class="left10" /><label>有,但不符合规定</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.fireSafetyFireDocTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold bsj">消防档案 </label>
+                  <label id="fireSafetyFireDoc">
+                    <input v-model="fireCheckLogPO.fireSafetyFireDoc1"
+                           type="checkbox" /><label>有</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFireDoc2"
+                           type="checkbox"
+                           class="left10" /><label>无</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFireDoc3"
+                           type="checkbox"
+                           class="left10" /><label>不符合要求</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.fireSafetyFirePoIntegerTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">消防重点部位 </label>
+                  <label id="fireSafetyFirePoInteger">
+                    <input v-model="fireCheckLogPO.fireSafetyFirePoInteger1"
+                           type="checkbox" /><label>确定</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFirePoInteger2"
+                           type="checkbox"
+                           class="left25" /><label>未确定</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.fireSafetyFireManTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">承担灭火和组织疏散任务的人员 </label>
+                  <label id="fireSafetyFireMan">
+                    <input v-model="fireCheckLogPO.fireSafetyFireMan1"
+                           type="checkbox" /><label>确定</label>
+                    <input v-model="fireCheckLogPO.fireSafetyFireMan2"
+                           type="checkbox"
+                           class="left25" /><label>未确定</label>
+                  </label>
+                </div>
+                <p>其他情况:<input v-model="fireCheckLogPO.fireSafetyOtherCase"
+                         type="text"
+                         class="under"></p>
               </div>
-              <div>
-                <label class="bold bsj">员工消防安全培训 </label>
-                <input type="checkbox" /><label>有记录</label>
-                <input type="checkbox"
-                       class="left10" /><label>无记录</label>
-                <input type="checkbox"
-                       class="left10" /><label>有,但不符合规定</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">消防安全管理人 </label>
-                <input type="checkbox" /><label>确定</label>
-                <input type="checkbox"
-                       class="left25" /><label>未确定</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold bsj">防火检查、巡查 </label>
-                <input type="checkbox" /><label>有记录</label>
-                <input type="checkbox"
-                       class="left10" /><label>无记录</label>
-                <input type="checkbox"
-                       class="left10" /><label>有,但不符合规定</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">消防设施、器材、消防安全标志定期组织维修保养 </label>
-                <input type="checkbox" /><label>有记录</label>
-                <input type="checkbox"
-                       class="left25" /><label>无记录</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold bsj">消防演练 </label>
-                <input type="checkbox" /><label>有记录</label>
-                <input type="checkbox"
-                       class="left10" /><label>无记录</label>
-                <input type="checkbox"
-                       class="left10" /><label>有,但不符合规定</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold bsj">消防档案 </label>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox"
-                       class="left10" /><label>无</label>
-                <input type="checkbox"
-                       class="left10" /><label>不符合要求</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">消防重点部位 </label>
-                <input type="checkbox" /><label>确定</label>
-                <input type="checkbox"
-                       class="left25" /><label>未确定</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">承担灭火和组织疏散任务的人员 </label>
-                <input type="checkbox" /><label>确定</label>
-                <input type="checkbox"
-                       class="left25" /><label>未确定</label>
-              </div>
-              <p>其他情况:<input type="text"
-                       class="under"></p>
-            </div>
-          </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="mengceng"
-               id="mengceng3">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <span class="fontBold">建筑防火</span>
-              <span class="btn"
-                    id="btn3">执法记录</span>
-            </div>
-            <div class="layui-card-body">
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">生产、储存、经营易燃易爆危险品的场所与居住场所
-                  设置在同一建筑物内 </label>
-                <input type="checkbox" /><label>否</label>
-                <input type="checkbox"
-                       class="left25" /><label>是</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">生生产、储存、经营其他物品的场所与居住场所设置在
-                  同一建筑物内</label>
-                <input type="checkbox" /><label>符合标准</label>
-                <input type="checkbox"
-                       class="left25" /><label>不符合标准</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">人员密集场所外墙门窗上设置影响逃生、灭火救援的
-                  障碍物</label>
-                <input type="checkbox" /><label>否</label>
-                <input type="checkbox"
-                       class="left25" /><label>是</label>
-              </div>
-              <div>
-                <label class="bold">消防车通道</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label class="bold">防火间距</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">防火分区</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">人员密集场所装修材料</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea rows="2"
-                        cols="40">
-              </textarea>
             </div>
           </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="mengceng"
-               id="mengceng4">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <span class="fontBold">安全疏散</span>
-              <span class="btn"
-                    id="btn4">执法记录</span>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng3">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <div>
-                <label class="bold">疏散通道</label><label>抽查部位:<input type="text"
-                         class="under"></label>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <span class="fontBold">建筑防火</span>
+                <span class="btn"
+                      id="btn3">执法记录</span>
               </div>
-              <div>
-                <label class="bold">安全出口</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label class="bold">应急照明</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label class="bold">疏散指示标志</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">疏散指示标志</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">消防控制室</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea rows="2"
-                        cols="40">
+              <div class="layui-card-body">
+                <div>
+                  <input v-model="fireCheckLogPO.buildFireDangerObjectTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">生产、储存、经营易燃易爆危险品的场所与居住场所设置在同一建筑物内 </label>
+                  <label id="buildFireDangerObject">
+                    <input v-model="fireCheckLogPO.buildFireDangerObject1"
+                           type="checkbox" /><label>否</label>
+                    <input v-model="fireCheckLogPO.buildFireDangerObject2"
+                           type="checkbox"
+                           class="left25" /><label>是</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.buildFireOtherObjectTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">生生产、储存、经营其他物品的场所与居住场所设置在同一建筑物内</label>
+                  <label id="buildFireOtherObject">
+                    <input v-model="fireCheckLogPO.buildFireOtherObject1"
+                           type="checkbox" /><label>符合标准</label>
+                    <input v-model="fireCheckLogPO.buildFireOtherObject2"
+                           type="checkbox"
+                           class="left25" /><label>不符合标准</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.buildFireHasObstacle"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">人员密集场所外墙门窗上设置影响逃生、灭火救援的障碍物</label>
+                  <label id="buildFireHasObstacle">
+                    <input v-model="fireCheckLogPO.buildFireHasObstacle1"
+                           type="checkbox" /><label>否</label>
+                    <input v-model="fireCheckLogPO.buildFireHasObstacle2"
+                           type="checkbox"
+                           class="left25" /><label>是</label>
+                  </label>
+                </div>
+                <div>
+                  <label class="bold">消防车通道</label><label>抽查部位:<input v-model="fireCheckLogPO.buildFireCarPass"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label class="bold">防火间距</label><label>抽查部位:<input v-model="fireCheckLogPO.buildFireFireSpace"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.buildFirePartitionTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">防火分区</label><label>抽查部位:<input v-model="fireCheckLogPO.buildFirePartitionPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.buildFireMaterialTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">人员密集场所装修材料</label><label>抽查部位:<input
+                           v-model="fireCheckLogPO.buildFireMaterialPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea rows="2"
+                          cols="40"
+                          v-model="fireCheckLogPO.buildFireCheckContent">
                 </textarea>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="mengceng"
-               id="mengceng5">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <span class="fontBold">消防控制室</span>
-              <span class="btn"
-                    id="btn5">执法记录</span>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng4">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">消防控制室</label>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <span class="fontBold">安全疏散</span>
+                <span class="btn"
+                      id="btn4">执法记录</span>
               </div>
-              <div>
-                <label class="bold">值班操作人员</label><label>在岗人数:<input type="text"
-                         class="under"></label><label class="bold">值班记录</label><input type="checkbox" /><label>有</label>
-                <input type="checkbox"
-                       class="left10" /><label>无</label>
+              <div class="layui-card-body">
+                <div>
+                  <label class="bold">疏散通道</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.evacuateEvacuatePass"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label class="bold">安全出口</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.evacuateSafeExit"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label class="bold">应急照明</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.evacuateLight"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label class="bold">疏散指示标志</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.evacuateSign"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="evacuateRefuge">
+                  <input v-model="fireCheckLogPO.evacuateRefuge1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.evacuateRefuge2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">避难层</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.evacuateRefugePart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="evacuateBroadcast">
+                  <input v-model="fireCheckLogPO.evacuateBroadcast1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.evacuateBroadcast2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">应急广播</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.evacuateBroadcastPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea rows="2"
+                          cols="40"
+                          v-model="fireCheckLogPO.evacuateCheckContent"></textarea>
               </div>
-              <div>
-                <label class="bold">消防联动控制设备运行情况</label>
-                <input type="checkbox" /><label>正常</label>
-                <input type="checkbox"
-                       class="left25" /><label>不正常</label>
-              </div>
-              <div>
-                <label class="bold">消防电话</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea rows="2"
-                        cols="40">
-                </textarea>
-            </div>
-          </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="mengceng"
-               id="mengceng6">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <div><span class="fontBold">消防设施器材</span><span>-自动报警系统</span></div>
-              <span class="btn"
-                    id="btn6">执法记录</span>
-            </div>
-            <div class="layui-card-body">
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">火灾自动报警系统</label>
-              </div>
-              <div>
-                <label class="bold">探 测 器</label><label>抽查部位及数量<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label class="bold">手动报警器</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label class="bold">控制设备</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label>其他设施:<input type="text"
-                         class="under"></label> <label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea rows="2"
-                        cols="40">
-                  </textarea>
             </div>
           </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="mengceng"
-               id="mengceng7">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <div><span class="fontBold">消防设施器材</span><span>-消防给水设施</span></div>
-              <span class="btn"
-                    id="btn7">执法记录</span>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng5">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">消防给水设施</label>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <span class="fontBold">消防控制室</span>
+                <span class="btn"
+                      id="btn5">执法记录</span>
               </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">消防水池</label><label>抽查部位:<input type="text"
-                         class="under"></label>
+              <div class="layui-card-body">
+                <div id="controlRoomHasClassroom">
+                  <input v-model="fireCheckLogPO.controlRoomHasClassroom1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.controlRoomHasClassroom2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">消防控制室</label>
+                </div>
+                <div id="controlRoomHanLog">
+                  <label class="bold">值班操作人员</label>
+                  <label>在岗人数:<input v-model="fireCheckLogPO.controlRoomOnlineNum"
+                           type="text"
+                           class="under"></label>
+                  <label class="bold">值班记录</label>
+                  <input v-model="fireCheckLogPO.controlRoomHanLog1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.controlRoomHanLog2"
+                         type="checkbox"
+                         class="left10" /><label>无</label>
+                </div>
+                <div id="controlRoomRunningStatus">
+                  <label class="bold">消防联动控制设备运行情况</label>
+                  <input v-model="fireCheckLogPO.controlRoomRunningStatus1"
+                         type="checkbox" /><label>正常</label>
+                  <input v-model="fireCheckLogPO.controlRoomRunningStatus2"
+                         type="checkbox"
+                         class="left25" /><label>不正常</label>
+                </div>
+                <div>
+                  <label class="bold">消防电话</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.controlRoomTel"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea rows="2"
+                          cols="40"
+                          v-model="fireCheckLogPO.controlRoomCheckContent"></textarea>
               </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">消防水箱</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">消防水泵</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">室内消火栓</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">室外消火栓</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">水泵接合器 </label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">稳压设施</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label>其他设施:<input type="text"
-                         class="under"></label> <label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea rows="2"
-                        cols="40">
-                    </textarea>
             </div>
           </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="mengceng"
-               id="mengceng8">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <div><span class="fontBold">消防设施器材</span><span>-自动灭火系统</span></div>
-              <span class="btn"
-                    id="btn8">执法记录</span>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng6">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">自动喷水灭火系统</label>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <div>
+                  <span class="fontBold">消防设施器材</span>
+                  <span>-自动报警系统</span>
+                </div>
+                <span class="btn"
+                      id="btn6">执法记录</span>
               </div>
-              <div>
-                <label class="bold">报警阀</label><label>抽查部位:<input type="text"
-                         class="under"></label>压力值:<input type="text"
-                       class="under"></label>
+              <div class="layui-card-body">
+                <div id="fireAlarmSystemHasSystem">
+                  <input v-model="fireCheckLogPO.fireAlarmSystemHasSystem1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.fireAlarmSystemHasSystem2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">火灾自动报警系统</label>
+                </div>
+                <div>
+                  <label class="bold">探 测 器</label>
+                  <label>抽查部位及数量<input v-model="fireCheckLogPO.fireAlarmSystemObserver"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label class="bold">手动报警器</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.fireAlarmSystemBurglar"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label class="bold">控制设备</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.fireAlarmSystemControlDevice"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label>其他设施:<input v-model="fireCheckLogPO.fireAlarmSystemOtherDevice"
+                           type="text"
+                           class="under"></label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.fireAlarmSystemCheckPoInteger"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea rows="2"
+                          cols="40"
+                          v-model="fireCheckLogPO.fireAlarmSystemCheckContent"></textarea>
               </div>
-              <div>
-                <label class="bold">末端试水装置</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label>其他设施:<input type="text"
-                         class="under"></label> <label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea style="border-bottom: 1px solid;"
-                        rows="2"
-                        cols="42">
-                      </textarea>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">其他自动灭火系统</label>
-              </div>
-              <div>
-                <label>类型:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label>设置部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea rows="2"
-                        cols="40">
-                      </textarea>
-            </div>
-
-          </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="mengceng"
-               id="mengceng9">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
-          </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <div><span class="fontBold">消防设施器材</span><span>-其他设施器材</span></div>
-              <span class="btn"
-                    id="btn9">执法记录</span>
-            </div>
-            <div class="layui-card-body">
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">防 火 门</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">防火卷帘</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">防排烟设施</label><label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox" /><label>无</label>
-                <label class="bold">灭 火 器</label><label>抽查部位及数量:<input type="text"
-                         class="under"></label>
-              </div>
-              <div>
-                <label>其他设施:<input type="text"
-                         class="under"></label> <label>抽查部位:<input type="text"
-                         class="under"></label>
-              </div>
-              <p>检查情况:</p>
-              <textarea rows="2"
-                        cols="40">
-                      </textarea>
             </div>
           </div>
-        </div>
-        <div class="layui-col-md6">
-          <div class="mengceng"
-               id="mengceng10">
-            <ul>
-              <li style="list-style: square;">防火门</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">防火卷帘</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-              <li style="list-style: square;">灭火器</li>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
-              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
-            </ul>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng7">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
+            </div>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <div>
+                  <span class="fontBold">消防设施器材</span>
+                  <span>-消防给水设施</span>
+                </div>
+                <span class="btn"
+                      id="btn7">执法记录</span>
+              </div>
+              <div class="layui-card-body">
+                <div id="waterSupplyHasSystem">
+                  <input v-model="fireCheckLogPO.waterSupplyHasSystem1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyHasSystem2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">消防给水设施</label>
+                </div>
+                <div id="waterSupplyPool">
+                  <input v-model="fireCheckLogPO.waterSupplyPool1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyPool2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">消防水池</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyPoolPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="waterSupplyBox">
+                  <input v-model="fireCheckLogPO.waterSupplyBox1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyBox2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">消防水箱</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyBoxPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="waterSupplyPump">
+                  <input v-model="fireCheckLogPO.waterSupplyPump1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyPump2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">消防水泵</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyPumpPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="waterSupplyIndoorHydrant">
+                  <input v-model="fireCheckLogPO.waterSupplyIndoorHydrant1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyIndoorHydrant2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">室内消火栓</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyIndoorHydrantPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="waterSupplyOutdoorHydrant">
+                  <input v-model="fireCheckLogPO.waterSupplyOutdoorHydrant1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyOutdoorHydrant2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">室外消火栓</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyOutdoorHydrantPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="waterSupplyAdapter">
+                  <input v-model="fireCheckLogPO.waterSupplyAdapter1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyAdapter2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">水泵接合器</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyAdapterPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="waterSupplyVoltage">
+                  <input v-model="fireCheckLogPO.waterSupplyVoltage1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.waterSupplyVoltage2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">稳压设施</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyVoltagePart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label>其他设施:<input v-model="fireCheckLogPO.waterSupplyOtherDevice"
+                           type="text"
+                           class="under"></label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.waterSupplyCheckPoInteger"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea rows="2"
+                          cols="40"
+                          v-model="fireCheckLogPO.waterSupplyCheckConten"></textarea>
+              </div>
+            </div>
           </div>
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <span class="fontBold">其他消防安全管理</span>
-              <span class="btn"
-                    id="btn10">执法记录</span>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng8">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold bsj">电器产品的线路定期维护、检测 </label>
-                <input type="checkbox" /><label>有记录</label>
-                <input type="checkbox"
-                       class="left10" /><label>无记录</label>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <div><span class="fontBold">消防设施器材</span><span>-自动灭火系统</span></div>
+                <span class="btn"
+                      id="btn8">执法记录</span>
               </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold bsj">燃气用具的管路定期维护、检测 </label>
-                <input type="checkbox" /><label>有</label>
-                <input type="checkbox"
-                       class="left10" /><label>无</label>
+              <div class="layui-card-body">
+                <div id="outfireHasSystem">
+                  <input v-model="fireCheckLogPO.outfireHasSystem1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.outfireHasSystem2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">自动喷水灭火系统</label>
+                </div>
+                <div>
+                  <label class="bold">报警阀</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.outfireValve"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label class="bold">末端试水装置</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.outfireTestDevice"
+                           type="text"
+                           class="under"></label>
+                  <label>压力值:<input v-model="fireCheckLogPO.outfirePressure"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label>其他设施:<input v-model="fireCheckLogPO.outfireOtherDevice"
+                           type="text"
+                           class="under"></label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.outfireCheckPoInteger"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea style="border-bottom: 1px solid;"
+                          rows="2"
+                          cols="42"
+                          v-model="fireCheckLogPO.outfireCheckContent"></textarea>
+                <div id="outfireHasOtherSystem">
+                  <input v-model="fireCheckLogPO.outfireHasOtherSystem1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.outfireHasOtherSystem2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">其他自动灭火系统</label>
+                </div>
+                <div>
+                  <label>类型:<input v-model="fireCheckLogPO.outfireSystemType"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label>设置部位:<input v-model="fireCheckLogPO.outfireOtherPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea rows="2"
+                          cols="40"
+                          v-model="fireCheckLogPO.outfireOtherCheckContent"></textarea>
               </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">违反规定使用明火作业或在具有火灾、爆炸危险的场
-                  所吸烟、使用明火 </label>
-                <input type="checkbox" /><label>否</label>
-                <input type="checkbox"
-                       class="left25" /><label>是</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">违反消防安全规定进入生产、储存易燃易爆危险品场所 </label>
-                <input type="checkbox" /><label>否</label>
-                <input type="checkbox"
-                       class="left25" /><label>是</label>
-              </div>
-              <div>
-                <input type="checkbox" /><label class="bsj">不涉及</label>
-                <label class="bold">违反有关消防技术标准和管理规定生产、储存、运输、
-                  销售、使用、销毁易燃易爆危险品 </label>
-                <input type="checkbox" /><label>否</label>
-                <input type="checkbox"
-                       class="left25" /><label>是</label>
-              </div>
-              <p>其他情况:<input type="text"
-                       class="under"></p>
             </div>
           </div>
-        </div>
-        <div class="layui-col-md12">
-          <div class="layui-card">
-            <div class="layui-card-header">
-              <span class="fontBold">备注</span>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng9">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
             </div>
-            <div class="layui-card-body">
-              <textarea rows="4"
-                        cols="40">
-          </textarea>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <div>
+                  <span class="fontBold">消防设施器材</span>
+                  <span>-其他设施器材</span>
+                </div>
+                <span class="btn"
+                      id="btn9">执法记录</span>
+              </div>
+              <div class="layui-card-body">
+                <div id="otherDeviceDoor">
+                  <input v-model="fireCheckLogPO.otherDeviceDoor1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.otherDeviceDoor2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">防 火 门</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.otherDeviceDoorPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="otherDeviceShutter">
+                  <input v-model="fireCheckLogPO.otherDeviceShutter1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.otherDeviceShutter2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">防火卷帘</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.otherDeviceShutterPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="otherDeviceSmoke">
+                  <input v-model="fireCheckLogPO.otherDeviceSmoke1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.otherDeviceSmoke2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">防排烟设施</label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.otherDeviceSmokePart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div id="otherDeviceExtinguish">
+                  <input v-model="fireCheckLogPO.otherDeviceExtinguish1"
+                         type="checkbox" /><label>有</label>
+                  <input v-model="fireCheckLogPO.otherDeviceExtinguish2"
+                         type="checkbox" /><label>无</label>
+                  <label class="bold">灭 火 器</label>
+                  <label>抽查部位及数量:<input v-model="fireCheckLogPO.otherDeviceExtinguishPart"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <div>
+                  <label>其他设施:<input v-model="fireCheckLogPO.otherDeviceOtherDevice"
+                           type="text"
+                           class="under"></label>
+                  <label>抽查部位:<input v-model="fireCheckLogPO.otherDeviceCheckPoInteger"
+                           type="text"
+                           class="under"></label>
+                </div>
+                <p>检查情况:</p>
+                <textarea rows="2"
+                          cols="40"
+                          v-model="fireCheckLogPO.otherDeviceCheckContent"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="layui-col-md12">
+            <div class="mengceng"
+                 id="mengceng10">
+              <ul>
+                <li style="list-style: square;">防火门</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">防火卷帘</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+                <li style="list-style: square;">灭火器</li>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span>
+                </div>
+                <div>
+                  <span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span>
+                </div>
+              </ul>
+            </div>
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <span class="fontBold">其他消防安全管理</span>
+                <span class="btn"
+                      id="btn10">执法记录</span>
+              </div>
+              <div class="layui-card-body">
+                <div>
+                  <input v-model="fireCheckLogPO.otherManageElectricTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold bsj">电器产品的线路定期维护、检测 </label>
+                  <label id="otherManageElectric">
+                    <input v-model="fireCheckLogPO.otherManageElectric1"
+                           type="checkbox" /><label>有记录</label>
+                    <input v-model="fireCheckLogPO.otherManageElectric2"
+                           type="checkbox"
+                           class="left10" /><label>无记录</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.otherManageGasTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold bsj">燃气用具的管路定期维护、检测 </label>
+                  <label id="otherManageGas">
+                    <input v-model="fireCheckLogPO.otherManageGas1"
+                           type="checkbox" /><label>有</label>
+                    <input v-model="fireCheckLogPO.otherManageGas2"
+                           type="checkbox"
+                           class="left10" /><label>无</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.otherManageUseFireTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">违反规定使用明火作业或在具有火灾、爆炸危险的场所吸烟、使用明火 </label>
+                  <label id="otherManageUseFire">
+                    <input v-model="fireCheckLogPO.otherManageUseFire1"
+                           type="checkbox" /><label>否</label>
+                    <input v-model="fireCheckLogPO.otherManageUseFire2"
+                           type="checkbox"
+                           class="left25" /><label>是</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.otherManageEnterDangerTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">违反消防安全规定进入生产、储存易燃易爆危险品场所 </label>
+                  <label id="enterDangerEnterDanger">
+                    <input v-model="fireCheckLogPO.enterDangerEnterDanger1"
+                           type="checkbox" /><label>否</label>
+                    <input v-model="fireCheckLogPO.enterDangerEnterDanger2"
+                           type="checkbox"
+                           class="left25" /><label>是</label>
+                  </label>
+                </div>
+                <div>
+                  <input v-model="fireCheckLogPO.enterDangerUserDangerTo"
+                         type="checkbox" /><label class="bsj">不涉及</label>
+                  <label class="bold">违反有关消防技术标准和管理规定生产、储存、运输、销售、使用、销毁易燃易爆危险品 </label>
+                  <label id="enterDangerUserDanger">
+                    <input v-model="fireCheckLogPO.enterDangerUserDanger1"
+                           type="checkbox" /><label>否</label>
+                    <input v-model="fireCheckLogPO.enterDangerUserDanger2"
+                           type="checkbox"
+                           class="left25" /><label>是</label>
+                  </label>
+                </div>
+                <p>其他情况:<input v-model="fireCheckLogPO.enterDangerOtherSit"
+                         type="text"
+                         class="under"></p>
+              </div>
+            </div>
+          </div>
+          <div class="layui-col-md12">
+            <div class="layui-card">
+              <div class="layui-card-header">
+                <span class="fontBold">备注</span>
+              </div>
+              <div class="layui-card-body">
+                <textarea rows="4"
+                          cols="40"
+                          v-model="fireCheckLogPO.remark"></textarea>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="signature-layout">
+        <div class=""
+             style="border-left: 3px solid rgb(59, 170, 255); padding-left: 5px;margin-top: 10px;">
+          被检查单位随同检查人员(签名)</div>
+        <div class="signature-btn"
+             id="btnSignature"
+             @click="unitCheckSign($event)"
+             aria-readonly="true">签名</div>
+      </div>
+      <div class="signature-layout">
+        <div class=""
+             style="border-left: 3px solid rgb(59, 170, 255); padding-left: 5px;margin-top: 10px;">主/协检查人员(签名)
+        </div>
+        <div style="display: flex">
+          <div class="signature-btn"
+               id="btnSignature1"
+               @click="unitCheckSign($event)"
+               aria-readonly="true">签名</div>
+          <div class="signature-btn"
+               id="btnSignature2"
+               @click="unitCheckSign($event)"
+               aria-readonly="true">签名</div>
+        </div>
+      </div>
+    </div>
+    <div v-if="btnShow"
+         class="fixed"
+         @click="saveCheckLog">
+      保存
     </div>
   </div>
 </body>
-<script src="./layui/layui.js"></script>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/main.js"></script>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      fireCheckLogUrl: "http://139.9.203.133:8088/fireapp",
+      token: "",
+      btnShow: false,
+      fireCheckLogPO: {
+        gid: null,
+        unitId: "",
+        mainCheckUserId: "",
+        assistCheckUserId: "",
+        taskId: "",
+        noticeId: "",
+        taskNo: "",
+        noticeType: "",
+        startTime: "",
+        endTime: "",
+        rriveTime: "",
+        baseInfoSN1: "",
+        baseInfoSN2: "",
+        baseInfoCheckType: "",
+        baseInfoCheckType1: false,
+        baseInfoCheckType2: false,
+        baseInfoUnitName: "",
+        baseInfoAddress: "",
+        baseInfoSafeLiableMan: "",
+        baseInfoSafeLiableManTel: "",
+        baseInfoSafeManageMan: "",
+        baseInfoSafeManageManTel: "",
+        baseInfoContactMan: "",
+        baseInfoContactManTel: "",
+        baseInfoCompanyType: "",
+        baseInfoCompanyType1: false,
+        baseInfoCompanyType2: false,
+        baseInfoCheckMan: "",
+        baseInfoCheckYear: "",
+        baseInfoCheckMonth: "",
+        baseInfoCheckDay: "",
+        baseInfoCheckHour: "",
+        baseInfoBeCheckSignUrl: "1111",
+        baseInfoMainUserSignUrl: "",
+        baseInfoAssistUserSignUrl: "",
+        baseInfoOtherUserSignUrl: "",
+        baseInfoCheckResult: "",
+        baseInfoComment: "",
+        baseInfoNoCheckCause: "",
+        baseInfoNoCheckDescribe: "",
+        baseInfoImgs: "",
+        keepOnRecordBuildName: "",
+        keepOnRecordBuildType: "",
+        keepOnRecordBuildType1: false,
+        keepOnRecordBuildType2: false,
+        keepOnRecordBuildType3: "",
+        keepOnRecordOtherCase: "",
+        keepOnRecordIsGather: "",
+        keepOnRecordIsGather1: false,
+        keepOnRecordIsGather2: false,
+        keepOnRecordHasChecked: "",
+        keepOnRecordHasChecked1: false,
+        keepOnRecordHasChecked2: false,
+        keepOnRecordIsCoincide: "",
+        keepOnRecordIsCoincide1: false,
+        keepOnRecordIsCoincide2: false,
+        keepOnRecordImgs: "",
+        fireSafetyFireSystem: "",
+        fireSafetyFireSystem1: false,
+        fireSafetyFireSystem2: false,
+        fireSafetyEmerPlan: "",
+        fireSafetyEmerPlan1: false,
+        fireSafetyEmerPlan2: false,
+        fireSafetySafeTrain: "",
+        fireSafetySafeTrain1: false,
+        fireSafetySafeTrain2: false,
+        fireSafetySafeTrain3: "",
+        fireSafetySafeManageTo: "",
+        fireSafetySafeManage: "",
+        fireSafetySafeManage1: false,
+        fireSafetySafeManage2: false,
+        fireSafetyFireCheckTo: "",
+        fireSafetyFireCheck: "",
+        fireSafetyFireCheck1: false,
+        fireSafetyFireCheck2: false,
+        fireSafetyFireCheck3: "",
+        fireSafetyFireRepairTo: "",
+        fireSafetyFireRepair: "",
+        fireSafetyFireRepair1: false,
+        fireSafetyFireRepair2: false,
+        fireSafetyFirePerformTo: "",
+        fireSafetyFirePerform: "",
+        fireSafetyFirePerform1: false,
+        fireSafetyFirePerform2: false,
+        fireSafetyFirePerform3: "",
+        fireSafetyFireDocTo: "",
+        fireSafetyFireDoc: "",
+        fireSafetyFireDoc1: false,
+        fireSafetyFireDoc2: false,
+        fireSafetyFireDoc3: "",
+        fireSafetyFirePoIntegerTo: "",
+        fireSafetyFirePoInteger: "",
+        fireSafetyFirePoInteger1: false,
+        fireSafetyFirePoInteger2: false,
+        fireSafetyFireManTo: "",
+        fireSafetyFireMan: "",
+        fireSafetyFireMan1: false,
+        fireSafetyFireMan2: false,
+        fireSafetyOtherCase: "",
+        fireSafetyImgs: "",
+        buildFireDangerObjectTo: "",
+        buildFireDangerObject: "",
+        buildFireDangerObject1: false,
+        buildFireDangerObject2: false,
+        buildFireOtherObjectTo: "",
+        buildFireOtherObject: "",
+        buildFireOtherObject1: false,
+        buildFireOtherObject2: false,
+        buildFireHasObstacleTo: "",
+        buildFireHasObstacle: "",
+        buildFireHasObstacle1: false,
+        buildFireHasObstacle2: false,
+        buildFireCarPass: "",
+        buildFireFireSpace: "",
+        buildFirePartitionTo: "",
+        buildFirePartitionPart: "",
+        buildFireMaterialTo: "",
+        buildFireMaterialPart: "",
+        buildFireCheckContent: "",
+        buildFireImgs: "",
+        evacuateEvacuatePass: "",
+        evacuateSafeExit: "",
+        evacuateLight: "",
+        evacuateSign: "",
+        evacuateRefuge: "",
+        evacuateRefuge1: false,
+        evacuateRefuge2: false,
+        evacuateRefugePart: "",
+        evacuateBroadcast: "",
+        evacuateBroadcast1: false,
+        evacuateBroadcast2: false,
+        evacuateBroadcastPart: "",
+        evacuateCheckContent: "",
+        evacuateImgs: "",
+        controlRoomHasClassroom: "",
+        controlRoomHasClassroom1: false,
+        controlRoomHasClassroom2: false,
+        controlRoomOnlineNum: "",
+        controlRoomHanLog: "",
+        controlRoomHanLog1: false,
+        controlRoomHanLog2: false,
+        controlRoomRunningStatus: "",
+        controlRoomRunningStatus1: false,
+        controlRoomRunningStatus2: false,
+        controlRoomTel: "",
+        controlRoomCheckContent: "",
+        controlRoomImgs: "",
+        fireAlarmSystemHasSystem: "",
+        fireAlarmSystemHasSystem1: false,
+        fireAlarmSystemHasSystem2: false,
+        fireAlarmSystemObserver: "",
+        fireAlarmSystemBurglar: "",
+        fireAlarmSystemControlDevice: "",
+        fireAlarmSystemOtherDevice: "",
+        fireAlarmSystemCheckPoInteger: "",
+        fireAlarmSystemCheckContent: "",
+        fireAlarmSystemImgs: "",
+        waterSupplyHasSystem: "",
+        waterSupplyHasSystem1: false,
+        waterSupplyHasSystem2: false,
+        waterSupplyPool: "",
+        waterSupplyPool1: false,
+        waterSupplyPool2: false,
+        waterSupplyPoolPart: "",
+        waterSupplyBox: "",
+        waterSupplyBox1: false,
+        waterSupplyBox2: false,
+        waterSupplyBoxPart: "",
+        waterSupplyPump: "",
+        waterSupplyPump1: false,
+        waterSupplyPump2: false,
+        waterSupplyPumpPart: "",
+        waterSupplyIndoorHydrant: "",
+        waterSupplyIndoorHydrant1: false,
+        waterSupplyIndoorHydrant2: false,
+        waterSupplyIndoorHydrantPart: "",
+        waterSupplyOutdoorHydrant: "",
+        waterSupplyOutdoorHydrant1: false,
+        waterSupplyOutdoorHydrant2: false,
+        waterSupplyOutdoorHydrantPart: "",
+        waterSupplyAdapter: "",
+        waterSupplyAdapter1: false,
+        waterSupplyAdapter2: false,
+        waterSupplyAdapterPart: "",
+        waterSupplyVoltage: "",
+        waterSupplyVoltage1: false,
+        waterSupplyVoltage2: false,
+        waterSupplyVoltagePart: "",
+        waterSupplyOtherDevice: "",
+        waterSupplyCheckPoInteger: "",
+        waterSupplyCheckConten: "",
+        waterSupplyImgs: "",
+        outfireHasSystem: "",
+        outfireHasSystem1: false,
+        outfireHasSystem2: false,
+        outfireValve: "",
+        outfireTestDevice: "",
+        outfirePressure: "",
+        outfireOtherDevice: "",
+        outfireCheckPoInteger: "",
+        outfireCheckContent: "",
+        outfireCheckContentImgs: "",
+        outfireHasOtherSystem: "",
+        outfireHasOtherSystem1: false,
+        outfireHasOtherSystem2: false,
+        outfireSystemType: "",
+        outfireOtherPart: "",
+        outfireOtherCheckContent: "",
+        outfireOtherCheckContentImgs: "",
+        otherDeviceDoor: "",
+        otherDeviceDoor1: false,
+        otherDeviceDoor2: false,
+        otherDeviceDoorPart: "",
+        otherDeviceShutter: "",
+        otherDeviceShutter1: false,
+        otherDeviceShutter2: false,
+        otherDeviceShutterPart: "",
+        otherDeviceSmoke: "",
+        otherDeviceSmoke1: false,
+        otherDeviceSmoke2: false,
+        otherDeviceSmokePart: "",
+        otherDeviceExtinguish: "",
+        otherDeviceExtinguish1: false,
+        otherDeviceExtinguish2: false,
+        otherDeviceExtinguishPart: "",
+        otherDeviceOtherDevice: "",
+        otherDeviceCheckPoInteger: "",
+        otherDeviceCheckContent: "",
+        otherDeviceImgs: "",
+        otherManageElectricTo: "",
+        otherManageElectric: "",
+        otherManageElectric1: false,
+        otherManageElectric2: false,
+        otherManageGasTo: "",
+        otherManageGas: "",
+        otherManageGas1: false,
+        otherManageGas2: false,
+        otherManageUseFireTo: "",
+        otherManageUseFire: "",
+        otherManageUseFire1: false,
+        otherManageUseFire2: false,
+        otherManageEnterDangerTo: "",
+        enterDangerEnterDanger: "",
+        enterDangerEnterDanger1: false,
+        enterDangerEnterDanger2: false,
+        enterDangerUserDangerTo: "",
+        enterDangerUserDanger: "",
+        enterDangerUserDanger1: false,
+        enterDangerUserDanger2: false,
+        enterDangerOtherSit: "",
+        enterDangerImgs: "",
+        remark: "",
+        remarkImgs: "",
+      }
+    },
+    methods: {
+      saveCheckLog() {
+        this.fireCheckLogPO.baseInfoBeCheckSignUrl = $('#btnSignatureimg').attr('src')
+        this.fireCheckLogPO.baseInfoMainUserSignUrl = $('#btnSignature1img').attr('src')
+        this.fireCheckLogPO.baseInfoAssistUserSignUrl = $('#btnSignature2img').attr('src')
+        this.handleParamValue();
+        const _selfConfig = {
+          headers: {
+            'Content-Type': 'application/json',
+            'token': this.token
+          }
+        }
+        //发送post请求
+        this.$http.post(this.fireCheckLogUrl + '/fire/checklog/log/save', JSON.stringify(this.fireCheckLogPO),
+            _selfConfig)
+          .then(function (res) {
+            alert("success")
+          }, function (res) {
+            console.log('请求失败处理', res.status);
+          });
+
+      },
+      // 处理业务数据
+      handleParamValue() {
+        //var poJsonStr = JSON.stringify(this.fireCheckLogPO);
+        //console.log(poJsonStr)
+        for (var p in this.fireCheckLogPO) {
+          var value1 = this.fireCheckLogPO[p + "1"]
+          var value2 = this.fireCheckLogPO[p + "2"]
+          var value3 = this.fireCheckLogPO[p + "3"]
+          if (value1 != null) {
+            if (value1) {
+              this.fireCheckLogPO[p] = 0;
+            }
+          }
+          if (value2 != null) {
+            if (value2) {
+              this.fireCheckLogPO[p] = 1;
+            }
+          }
+          if (value3 != null) {
+            if (value3) {
+              this.fireCheckLogPO[p] = 2;
+            }
+          }
+        }
+      },
+      // 处理业务数据
+      handleResultValue() {
+        for (var p in this.fireCheckLogPO) {
+          var value1 = this.fireCheckLogPO[p + "1"]
+          var value2 = this.fireCheckLogPO[p + "2"]
+          var value3 = this.fireCheckLogPO[p + "3"]
+          var value = this.fireCheckLogPO[p];
+          if (!value1 || !value2 || !value3) {
+            if (value != null) {
+              if (value == 0) {
+                this.fireCheckLogPO[p + "1"] = true;
+              } else if (value == 1) {
+                this.fireCheckLogPO[p + "2"] = true;
+              } else if (value == 2) {
+                this.fireCheckLogPO[p + "3"] = true;
+              }
+            }
+          }
+        }
+      },
+      // 不传name返回所有值，否则返回对应值
+      getUrlParams(name) {
+        var url = window.location.search;
+        if (url.indexOf('?') == 1) {
+          return false;
+        }
+        url = url.substr(1);
+        url = url.split('&');
+        var name = name || '';
+        var nameres;
+        // 获取全部参数及其值
+        for (var i = 0; i < url.length; i++) {
+          var info = url[i].split('=');
+          var obj = {};
+          obj[info[0]] = decodeURI(info[1]);
+          url[i] = obj;
+        }
+        // 如果传入一个参数名称，就匹配其值
+        if (name) {
+          for (var i = 0; i < url.length; i++) {
+            for (const key in url[i]) {
+              if (key == name) {
+                nameres = url[i][key];
+              }
+            }
+          }
+        } else {
+          nameres = url;
+        }
+        // 返回结果
+        return nameres;
+      },
+      getCheckLogByTaskId() {
+        const _selfConfig = {
+          headers: {
+            'Content-Type': 'application/json',
+            'token': this.token
+          }
+        }
+        this.$http.get(this.fireCheckLogUrl + "/fire/checklog/log/find?taskId=" + this.fireCheckLogPO.taskId,
+            _selfConfig)
+          .then(function (res) {
+            this.fireCheckLogPO = res.data.data;
+            this.handleResultValue();
+            this.btnShow = false;
+          }, function (res) {
+            console.log('请求失败处理', res.status);
+          });
+      },
+      unitCheckSign(e) {
+        $.signature(function (orgValue) {
+          // value is not null when signatured
+          if (orgValue) {
+            var img = ' <img id=' + e.target.id +
+              'img style="pointer-events:none" class="signature-img" src="' + orgValue + '" />'
+            e.target.innerHTML = img;
+          }
+        });
+      },
+    },
+    created() {
+      this.btnShow = false;
+      this.fireCheckLogPO.taskId = this.getUrlParams("taskId");
+      this.token = this.getUrlParams("token");
+      if (this.fireCheckLogPO.taskId != null) {
+        this.getCheckLogByTaskId();
+      }
+    }
+  })
+</script>
+
 
 </html>
