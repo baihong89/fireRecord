@@ -1,0 +1,750 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge" />
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet"
+        href="./layui/css/layui.css">
+  <link rel="stylesheet"
+        href="./css/text.css" />
+  <title>消防监督检查记录</title>
+</head>
+
+<body>
+  <div class="content">
+    <div class="top">
+      <span>南通市消防救援支队</span>
+      <h3 class="fontBold">消防监督检查记录</h3>
+    </div>
+    <p class="xfzz">编号 (<input type="text"
+             style="width: 35px;"
+             class="noborder"> ) 第<input type="text"
+             style="width: 35px;"
+             class="noborder"> 号</p>
+    <form style="display: flex;margin-bottom: 30px;">
+      <label style="width: 70px;">检查形式:</label>
+      <div>
+        <input type="checkbox" /><label>消防监督抽查</label><br />
+        <input type="checkbox" /><label>公众聚集场所投入使用、营业前消防安全检查 </label>
+      </div>
+    </form>
+    <p>被检查单位（场所）名称:<input type="text"
+             style="width:50%;"
+             class="under"></p>
+    <p>地　　址:<input type="text"
+             class="under"
+             style="width:80%;"></p>
+    <div class="flex">
+      <p>消防安全责任人:<input type="text"
+               class="under"></p>
+      <p>电话:<input type="text"
+               class="under"></p>
+    </div>
+    <div class="flex">
+      <p>消防安全管理人:<input type="text"
+               class="under"></p>
+      <p>电话:<input type="text"
+               class="under"></p>
+    </div>
+    <div class="flex">
+      <p>联 系 人:<input type="text"
+               class="under"></p>
+      <p>电话:<input type="text"
+               class="under"></p>
+    </div>
+    <div style="margin: 30px 0;">
+      <input type="checkbox" /><label>消防安全重点单位</label>
+      <input type="checkbox"
+             class="left25" /><label>非消防安全重点单位</label>
+    </div>
+    <p>消防监督检查员:<input type="text"
+             class="under"></p>
+    <div>
+      <p>检查时间:<input type="text"
+               style="width: 35px;"
+               class="under">年<input type="text"
+               style="width: 35px;"
+               class="under">月<input type="text"
+               style="width: 35px;"
+               class="under">日<input type="text"
+               style="width: 35px;"
+               class="under">时</p>
+    </div>
+    <p>被检查单位随同检查人员（签名）:<input type="text"
+             class="under"></p>
+    <p style="margin: 50px 0;">此记录由消防救援机构支队存档</p>
+    <div class="tableBox">
+      <h5 style="text-align: center;
+      margin: 13px 0;">监 督 检 查 内 容 和 情 况</h5>
+
+      <div class="layui-row layui-col-space15">
+        <div class="layui-col-md6">
+          <div class="mengceng"
+               id="mengceng1">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <span class="fontBold">消防许可及验收备案</span>
+              <span class="btn"
+                    id="btn1">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <p class="bold">被查建筑物名称:<input type="text"
+                       class="under"></p>
+              <div><input type="checkbox" /><label>1998年9月1日之前竣工建筑且此后未改建（含装修、用途变更）</label></div>
+              <div><input type="checkbox" /><label>依法通过消防验收</label></div>
+              <div><input type="checkbox" /><label>依法进行竣工验收消防备案</label></div>
+              <p>其他情况:<input type="text"
+                       class="under"></p>
+              <div>
+                <input type="checkbox" /><label>是</label>
+                <input type="checkbox"
+                       class="left25" /><label>否</label>
+                <label style="margin-left: 30px;">公众聚集场所</label>
+              </div>
+              <p class="bold">建筑物或者场所使用情况与消防验收或者竣工验收消防备案时的使用性质相符情况</p>
+              <div>
+                <input type="checkbox" /><label>相符</label>
+                <input type="checkbox"
+                       class="left25" /><label>不相符</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md6">
+          <div class="mengceng"
+               id="mengceng2">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <span class="fontBold">消防安全管理</span>
+              <span class="btn"
+                    id="btn2">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <label class="bold">消防安全制度 </label>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox"
+                       class="left25" /><label>无</label>
+              </div>
+              <div>
+                <label class="bold">灭火和应急疏散预案</label>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox"
+                       class="left25" /><label>无</label>
+              </div>
+              <div>
+                <label class="bold bsj">员工消防安全培训 </label>
+                <input type="checkbox" /><label>有记录</label>
+                <input type="checkbox"
+                       class="left10" /><label>无记录</label>
+                <input type="checkbox"
+                       class="left10" /><label>有,但不符合规定</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">消防安全管理人 </label>
+                <input type="checkbox" /><label>确定</label>
+                <input type="checkbox"
+                       class="left25" /><label>未确定</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold bsj">防火检查、巡查 </label>
+                <input type="checkbox" /><label>有记录</label>
+                <input type="checkbox"
+                       class="left10" /><label>无记录</label>
+                <input type="checkbox"
+                       class="left10" /><label>有,但不符合规定</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">消防设施、器材、消防安全标志定期组织维修保养 </label>
+                <input type="checkbox" /><label>有记录</label>
+                <input type="checkbox"
+                       class="left25" /><label>无记录</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold bsj">消防演练 </label>
+                <input type="checkbox" /><label>有记录</label>
+                <input type="checkbox"
+                       class="left10" /><label>无记录</label>
+                <input type="checkbox"
+                       class="left10" /><label>有,但不符合规定</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold bsj">消防档案 </label>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox"
+                       class="left10" /><label>无</label>
+                <input type="checkbox"
+                       class="left10" /><label>不符合要求</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">消防重点部位 </label>
+                <input type="checkbox" /><label>确定</label>
+                <input type="checkbox"
+                       class="left25" /><label>未确定</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">承担灭火和组织疏散任务的人员 </label>
+                <input type="checkbox" /><label>确定</label>
+                <input type="checkbox"
+                       class="left25" /><label>未确定</label>
+              </div>
+              <p>其他情况:<input type="text"
+                       class="under"></p>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="mengceng"
+               id="mengceng3">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <span class="fontBold">建筑防火</span>
+              <span class="btn"
+                    id="btn3">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">生产、储存、经营易燃易爆危险品的场所与居住场所
+                  设置在同一建筑物内 </label>
+                <input type="checkbox" /><label>否</label>
+                <input type="checkbox"
+                       class="left25" /><label>是</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">生生产、储存、经营其他物品的场所与居住场所设置在
+                  同一建筑物内</label>
+                <input type="checkbox" /><label>符合标准</label>
+                <input type="checkbox"
+                       class="left25" /><label>不符合标准</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">人员密集场所外墙门窗上设置影响逃生、灭火救援的
+                  障碍物</label>
+                <input type="checkbox" /><label>否</label>
+                <input type="checkbox"
+                       class="left25" /><label>是</label>
+              </div>
+              <div>
+                <label class="bold">消防车通道</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label class="bold">防火间距</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">防火分区</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">人员密集场所装修材料</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea rows="2"
+                        cols="40">
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="mengceng"
+               id="mengceng4">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <span class="fontBold">安全疏散</span>
+              <span class="btn"
+                    id="btn4">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <label class="bold">疏散通道</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label class="bold">安全出口</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label class="bold">应急照明</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label class="bold">疏散指示标志</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">疏散指示标志</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">消防控制室</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea rows="2"
+                        cols="40">
+                </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="mengceng"
+               id="mengceng5">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <span class="fontBold">消防控制室</span>
+              <span class="btn"
+                    id="btn5">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">消防控制室</label>
+              </div>
+              <div>
+                <label class="bold">值班操作人员</label><label>在岗人数:<input type="text"
+                         class="under"></label><label class="bold">值班记录</label><input type="checkbox" /><label>有</label>
+                <input type="checkbox"
+                       class="left10" /><label>无</label>
+              </div>
+              <div>
+                <label class="bold">消防联动控制设备运行情况</label>
+                <input type="checkbox" /><label>正常</label>
+                <input type="checkbox"
+                       class="left25" /><label>不正常</label>
+              </div>
+              <div>
+                <label class="bold">消防电话</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea rows="2"
+                        cols="40">
+                </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="mengceng"
+               id="mengceng6">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <div><span class="fontBold">消防设施器材</span><span>-自动报警系统</span></div>
+              <span class="btn"
+                    id="btn6">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">火灾自动报警系统</label>
+              </div>
+              <div>
+                <label class="bold">探 测 器</label><label>抽查部位及数量<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label class="bold">手动报警器</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label class="bold">控制设备</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label>其他设施:<input type="text"
+                         class="under"></label> <label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea rows="2"
+                        cols="40">
+                  </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="mengceng"
+               id="mengceng7">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <div><span class="fontBold">消防设施器材</span><span>-消防给水设施</span></div>
+              <span class="btn"
+                    id="btn7">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">消防给水设施</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">消防水池</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">消防水箱</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">消防水泵</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">室内消火栓</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">室外消火栓</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">水泵接合器 </label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">稳压设施</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label>其他设施:<input type="text"
+                         class="under"></label> <label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea rows="2"
+                        cols="40">
+                    </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="mengceng"
+               id="mengceng8">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <div><span class="fontBold">消防设施器材</span><span>-自动灭火系统</span></div>
+              <span class="btn"
+                    id="btn8">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">自动喷水灭火系统</label>
+              </div>
+              <div>
+                <label class="bold">报警阀</label><label>抽查部位:<input type="text"
+                         class="under"></label>压力值:<input type="text"
+                       class="under"></label>
+              </div>
+              <div>
+                <label class="bold">末端试水装置</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label>其他设施:<input type="text"
+                         class="under"></label> <label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea style="border-bottom: 1px solid;"
+                        rows="2"
+                        cols="42">
+                      </textarea>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">其他自动灭火系统</label>
+              </div>
+              <div>
+                <label>类型:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label>设置部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea rows="2"
+                        cols="40">
+                      </textarea>
+            </div>
+
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="mengceng"
+               id="mengceng9">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <div><span class="fontBold">消防设施器材</span><span>-其他设施器材</span></div>
+              <span class="btn"
+                    id="btn9">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">防 火 门</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">防火卷帘</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">防排烟设施</label><label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox" /><label>无</label>
+                <label class="bold">灭 火 器</label><label>抽查部位及数量:<input type="text"
+                         class="under"></label>
+              </div>
+              <div>
+                <label>其他设施:<input type="text"
+                         class="under"></label> <label>抽查部位:<input type="text"
+                         class="under"></label>
+              </div>
+              <p>检查情况:</p>
+              <textarea rows="2"
+                        cols="40">
+                      </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md6">
+          <div class="mengceng"
+               id="mengceng10">
+            <ul>
+              <li style="list-style: square;">防火门</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">防火卷帘</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+              <li style="list-style: square;">灭火器</li>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>不合格</span> <span>通知书</span></div>
+              <div><span>一栋一层</span><span>抽查部位:东南方向</span><span>合格</span></div>
+            </ul>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <span class="fontBold">其他消防安全管理</span>
+              <span class="btn"
+                    id="btn10">执法记录</span>
+            </div>
+            <div class="layui-card-body">
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold bsj">电器产品的线路定期维护、检测 </label>
+                <input type="checkbox" /><label>有记录</label>
+                <input type="checkbox"
+                       class="left10" /><label>无记录</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold bsj">燃气用具的管路定期维护、检测 </label>
+                <input type="checkbox" /><label>有</label>
+                <input type="checkbox"
+                       class="left10" /><label>无</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">违反规定使用明火作业或在具有火灾、爆炸危险的场
+                  所吸烟、使用明火 </label>
+                <input type="checkbox" /><label>否</label>
+                <input type="checkbox"
+                       class="left25" /><label>是</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">违反消防安全规定进入生产、储存易燃易爆危险品场所 </label>
+                <input type="checkbox" /><label>否</label>
+                <input type="checkbox"
+                       class="left25" /><label>是</label>
+              </div>
+              <div>
+                <input type="checkbox" /><label class="bsj">不涉及</label>
+                <label class="bold">违反有关消防技术标准和管理规定生产、储存、运输、
+                  销售、使用、销毁易燃易爆危险品 </label>
+                <input type="checkbox" /><label>否</label>
+                <input type="checkbox"
+                       class="left25" /><label>是</label>
+              </div>
+              <p>其他情况:<input type="text"
+                       class="under"></p>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              <span class="fontBold">备注</span>
+            </div>
+            <div class="layui-card-body">
+              <textarea rows="4"
+                        cols="40">
+          </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./layui/layui.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/main.js"></script>
+
+</html>

@@ -1,0 +1,133 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  overflow-x: hidden;
+}
+
+div,
+p,
+textarea,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+textarea {
+  border: none;
+}
+
+p {
+  line-height: 25px;
+}
+
+.content {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 30px 25px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.xfzz {
+  text-align: right;
+  font-size: 14px;
+}
+
+
+.noborder {
+  border: none;
+}
+
+.under {
+  border: none;
+  border-bottom: 1px solid;
+  width: 95px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tableBox {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #C0C0C0;
+}
+
+.layui-card-header {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(180, 192, 212);
+}
+
+.mengceng {
+  width: 80%;
+  height: 200px;
+  background: #3857F8;
+  position: absolute;
+  top: 51px;
+  z-index: 99;
+  padding: 30px;
+  display: none;
+}
+
+.mengceng>ul li {
+  color: #fff;
+}
+
+.mengceng>ul span {
+  color: #fff;
+  margin-left: 15px;
+}
+
+.bold {
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.bsj {
+  margin-right: 10px;
+}
+
+.lab {
+  margin-right: 30px;
+}
+
+.left25 {
+  margin-left: 25px;
+}
+
+.left10 {
+  margin-left: 10px;
+}
+
+.btn {
+  background: #333;
+  height: 25px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  border-radius: 4px;
+  color: #B5B5B5;
+}
+
+.fontBold {
+  font-weight: bold;
+}
