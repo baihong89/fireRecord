@@ -146,3 +146,35 @@ p {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.signature-layout {
+  /* border-bottom: 1px solid #CCC; */
+  overflow: visible;
+  /* height: 45px;
+  width: 200px; */
+  margin-bottom: 26px;
+}
+
+.signature-img {
+  max-height: 100px;
+  max-width: 140px;
+}
+
+.signature-btn {
+  width: 140px;
+  height: 100px;
+  margin-top: 10px;
+  border: 1px solid #ffffff;
+  background: rgb(245, 245, 245);
+  text-align: center;
+  line-height: 100px;
+}
+
+.signature-btn:hover {
+  border: 1px solid #0486f8;
+}
+
+
+#btnSignature2 {
+  margin-left: 30px;
+}
